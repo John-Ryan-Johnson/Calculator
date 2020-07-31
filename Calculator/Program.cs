@@ -12,7 +12,6 @@ namespace Calculator
                 * (multiply each number)
                 ^ (square each number)
                 + (add each number)
-                - (subtract each number)
                 / (divide each number)
                 @ (average of all numbers)");
 
@@ -37,7 +36,7 @@ namespace Calculator
 
                 Console.WriteLine(result);
 
-                Console.ReadLine();
+                Console.ReadKey();
             }
 
             //Square
@@ -58,11 +57,23 @@ namespace Calculator
 
                 Console.WriteLine($"The answer is: {squaredResult}.");
 
-                Console.ReadLine();
+                Console.ReadKey();
             }
 
+            //Addition
 
+            else if (chosenMethod.Contains('+'))
+            {
+                var addedResult = 0;
 
+                foreach (var number in numbers)
+                {
+                    addedResult += int.Parse(number);
+                }
+                Console.WriteLine($"The answer is: {addedResult}.");
+
+                Console.ReadKey();
+            }
         }
     }
 }
