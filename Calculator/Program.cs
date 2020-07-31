@@ -6,27 +6,62 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Hello, Professor.");
+
+            Console.WriteLine(@"Please enter one of the following methods that you would like to use:
+                * (multiply each number)
+                ^ (square each number)
+                + (add each number)
+                - (subtract each number)
+                / (divide each number)
+                @ (average of all numbers)");
+
+            var chosenMethod = Console.ReadLine();
+
             Console.WriteLine("Please enter some numbers seperated by commas. (Ex: 2,4,6,8)");
 
             string userInput = Console.ReadLine();
 
             var numbers = userInput.Split(',');
 
-            //loop through numbers and multiply them together
-
             int result = 1;
 
-            foreach (var number in numbers)
-            {
-                int parsedNumber = int.Parse(number);
+            //Multiply
 
-                result *= parsedNumber;
+            if (chosenMethod.Contains('*'))
+            {
+                foreach (var number in numbers)
+                {
+                    result *= int.Parse(number);
+                }
+
+                Console.WriteLine(result);
+
+                Console.ReadLine();
+            }
+
+            //Square
+
+            else if (chosenMethod.Contains('^'))
+            {
+                var squaredResult = "";
+
+                foreach (var number in numbers)
+                {
+                    var numbersToSquare = int.Parse(number);
+
+                    var squaredNumber = numbersToSquare * numbersToSquare;
+
+                    squaredResult += $"{squaredNumber.ToString()},";
+                }
+                squaredResult = squaredResult.Remove(squaredResult.Length - 1);
+
+                Console.WriteLine($"The answer is: {squaredResult}.");
+
+                Console.ReadLine();
             }
 
 
-            Console.WriteLine(result);
-
-            Console.ReadKey();
 
         }
     }
