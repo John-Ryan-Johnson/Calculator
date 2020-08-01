@@ -51,7 +51,7 @@ namespace Calculator
 
                     var squaredNumber = numbersToSquare * numbersToSquare;
 
-                    squaredResult += $"{squaredNumber.ToString()},";
+                    squaredResult += $"{squaredNumber},";
                 }
                 squaredResult = squaredResult.Remove(squaredResult.Length - 1);
 
@@ -71,6 +71,44 @@ namespace Calculator
                     addedResult += int.Parse(number);
                 }
                 Console.WriteLine($"The answer is: {addedResult}.");
+
+                Console.ReadKey();
+            }
+
+            //Division
+
+            else if (chosenMethod.Contains('/'))
+            {
+                var dividedResult = 0m;
+
+                for (int i = 0; i < numbers.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        dividedResult = Convert.ToDecimal(numbers[i]);
+                    }
+                    else
+                    {
+                        dividedResult /= Convert.ToDecimal(numbers[i]);
+                    }
+                }
+                Console.WriteLine($"The answer is: {dividedResult}.");
+                Console.ReadKey();
+            }
+
+            //Averages
+
+            else if (chosenMethod.Contains('@'))
+            {
+                var sum = 0;
+
+                foreach (var number in numbers)
+                {
+                    sum += int.Parse(number);
+                }
+                var averagedResult = Convert.ToDecimal(sum) / Convert.ToDecimal(numbers.Length);
+
+                Console.WriteLine($"The answer is: {averagedResult}.");
 
                 Console.ReadKey();
             }
